@@ -3,9 +3,36 @@ import time
 
 mirai = Mirai("145.28.47.180")
 
-mirai.motion().set_head(-0.5, -0.5)
+mirai.motion().wave()
 time.sleep(3)
-mirai.motion().set_head(0.5, 0.5)
+
+
+
+
+
+
+
+
+
+#mirai.motion().wake_up().set_head(-0.5, -0.5)
+#time.sleep(3)
+#mirai.motion().set_head(0.5, 0.5)
+
+#mirai.sleep()
+#time.sleep(10)
+#mirai.wake_up()
+#time.sleep(3)
+
+#mirai.motion().rotate()
+
+
+'''while True:
+	mirai.motion().move_head_left()
+	mirai.motion().arm_up('right').arm_down('left')
+	time.sleep(10)
+	mirai.motion().move_head_right()
+	mirai.motion().arm_down('right').arm_up('left')
+	time.sleep(10)'''
 
 '''mirai.speech().set_language("Dutch")
 mirai.speech().say("Hi ik ben Mirai en ik ben een robot.")

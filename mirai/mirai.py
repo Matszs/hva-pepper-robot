@@ -3,13 +3,15 @@ import qi
 import sys
 from speech import Speech
 from motion import Motion
+from tablet import Tablet
 
 class Mirai:
-	ip = port = _motion = _speech = session = None
+	ip = port = _motion = _speech = _tablet = session = None
 
 	def load_modules(self):
 		self._speech = Speech(self.session)
 		self._motion = Motion(self.session)
+		self._tablet = Tablet(self.session)
 
 	def __init__(self, ip, port = 9559):
 		self.ip = ip
@@ -30,6 +32,15 @@ class Mirai:
 
 	def motion(self):
 		return self._motion
+
+	def tablet(self):
+		return self._tablet
+
+	def sleep(self):
+		return self._motion.sleep()
+
+	def wake_up(self):
+		return self._motion.wake_up()
 
 
 
