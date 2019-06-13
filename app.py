@@ -1,17 +1,29 @@
 from mirai import Mirai
 import time
+import threading
 
 mirai = Mirai("145.28.47.180")
 
-mirai.motion().run('dab-a54837/animations')
+mirai.motion().run('animations/Stand/Gestures/Hey_1')
+
+
+#threading.Thread(target=mirai.motion().run, args=('animations/Stand/Gestures/Hey_1',)).start()
+
+
+
+
+#mirai.motion().run('mirai_moves/dab')
+#mirai.motion().run('animations/Stand/Gestures/Hey_6')
+#mirai.motion().run('animations/Stand/Gestures/Nothing_1')
+#mirai.motion().stand()
 
 #mirai.motion().dab()
 
-#mirai.speech().set_volume(0.3).set_language("Dutch")
+#mirai.speech().set_volume(0.5).set_language("Dutch")
 #mirai.speech().set_speed(150).say("Hey Hallo!")
 #time.sleep(.4)
 #mirai.speech().set_speed(40).say("Ik ben Miray")
-#mirai.speech().set_speed(40).set_volume(0.5).say("en ik ben een robot").set_volume(0.3)
+#mirai.speech().set_speed(40).set_volume(0.8).say("en ik ben een robot").set_volume(0.5)
 
 #mirai.motion().wave()
 #time.sleep(3)
