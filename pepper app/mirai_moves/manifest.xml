@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<package version="1.0.5" uuid="mirai_moves-d0fa06">
+ <names>
+  <name lang="en_US">Mirai moves</name>
+  <name lang="nl_NL">mirai_moves</name>
+ </names>
+ <descriptions>
+  <description lang="en_US">Mirai moves</description>
+  <description lang="nl_NL">Mirai moves</description>
+ </descriptions>
+ <supportedLanguages>
+  <language>en_US</language>
+  <language>nl_NL</language>
+ </supportedLanguages>
+ <descriptionLanguages>
+  <language>en_US</language>
+  <language>nl_NL</language>
+ </descriptionLanguages>
+ <contents>
+  <behaviorContent path="dab">
+   <nature>interactive</nature>
+   <permissions/>
+  </behaviorContent>
+ </contents>
+ <requirements>
+  <naoqiRequirement minVersion="2.5" maxVersion="2.5"/>
+  <robotRequirement model="JULIETTE"/>
+ </requirements>
+</package>

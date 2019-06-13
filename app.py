@@ -3,8 +3,18 @@ import time
 
 mirai = Mirai("145.28.47.180")
 
-mirai.motion().wave()
-time.sleep(3)
+mirai.motion().run('dab-a54837/animations')
+
+#mirai.motion().dab()
+
+#mirai.speech().set_volume(0.3).set_language("Dutch")
+#mirai.speech().set_speed(150).say("Hey Hallo!")
+#time.sleep(.4)
+#mirai.speech().set_speed(40).say("Ik ben Miray")
+#mirai.speech().set_speed(40).set_volume(0.5).say("en ik ben een robot").set_volume(0.3)
+
+#mirai.motion().wave()
+#time.sleep(3)
 
 
 

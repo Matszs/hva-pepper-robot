@@ -2,12 +2,13 @@ import time
 import math
 
 class Motion:
-	session = motion_service = posture_service = None
+	session = motion_service = posture_service = animation_service = None
 
 	def __init__(self, session):
 		self.session = session
 		self.motion_service = self.session.service("ALMotion")
 		self.posture_service = self.session.service("ALRobotPosture")
+		self.animation_service = self.session.service("ALAnimationPlayer")
 
 		# Disable the autonomous ability of the arms.
 		self.motion_service.setIdlePostureEnabled("Arms", False)
@@ -40,16 +41,18 @@ class Motion:
 	def move_head_right(self, speed = 0.3):
 		return self.set_head(-1.3, 0, speed)
 
-	def set_hand(self, side, shoulder_pitch = None, shoulder_roll = None, speed = 0.3):
+	def set_hand(self, side, shoulder_pitch = None, shoulder_roll = None, speed = 0.3, wait_time = None):
 		# determine the arm to rotate
 		if side in ['left', 'l', 'lf', 'lft']:
 			side = 'L'
 		else:
 			side = 'R'
 
-		self.motion_service.setStiffnesses("Arms", 0)
+		self.motion_service.setStiffnesses("Arms", 1)
 		if shoulder_pitch:
 			self.motion_service.setAngles(side + "ShoulderPitch", shoulder_pitch, speed)
+		if wait_time:
+			time.sleep(wait_time)
 		if shoulder_roll:
 			self.motion_service.setAngles(side + "ShoulderRoll", shoulder_roll, speed)
 		return self
@@ -62,6 +65,26 @@ class Motion:
 			side = 'R'
 
 		self.motion_service.setAngles(side + "WristYaw", rotation, speed)
+		return self
+
+	def move_elbow(self, side, rotation = 1.0, speed = 0.3):
+		# determine the wrist to rotate
+		if side in ['left', 'l', 'lf', 'lft']:
+			side = 'L'
+		else:
+			side = 'R'
+
+		self.motion_service.setAngles(side + "ElbowRoll", rotation, speed)
+		return self
+
+	def rotate_elbow(self, side, rotation = 1.0, speed = 0.3):
+		# determine the wrist to rotate
+		if side in ['left', 'l', 'lf', 'lft']:
+			side = 'L'
+		else:
+			side = 'R'
+
+		self.motion_service.setAngles(side + "ElbowYaw", rotation, speed)
 		return self
 
 	def arm_up(self, side, speed = 0.3):
@@ -82,7 +105,7 @@ class Motion:
 
 		return self
 
-	def wave(self):
+	'''def wave(self):
 		#self.motion_service.setStiffnesses("Arms", 0.1)
 
 		# Move arm up
@@ -118,6 +141,34 @@ class Motion:
 		# back to begin position
 		self.posture_service.goToPosture("StandInit", 0.5)
 		self.set_head(0, 0)
+		return self'''
+
+	def wave(self):
+		self.animation_service.run("animations/Stand/Gestures/Hey_1")
+
+	def dab(self):
+
+		self.set_hand("left", -1.5, 3, 1)
+		self.set_head(-1, 0.4)
+		self.set_hand("right", -0.3, 0, 0.3)
+		self.move_elbow("right", 2.5, 0.3)
+
+		time.sleep(.5)
+
+		self.rotate_elbow("right", 0.5, 0.3)
+		#time.sleep(.5)
+
+		time.sleep(3)
+
+		# back to begin position
+		self.posture_service.goToPosture("StandInit", 0.5)
+		self.set_head(0, 0)
+
+		return self
 
 	def move(self):
 		print("move")
+
+	# Choose from: http://doc.aldebaran.com/2-4/naoqi/motion/alanimationplayer-advanced.html#animationplayer-list-behaviors-pepper
+	def run(self, animation_file):
+		self.animation_service.run(animation_file)
