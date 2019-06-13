@@ -170,5 +170,7 @@ class Motion:
 		print("move")
 
 	# Choose from: http://doc.aldebaran.com/2-4/naoqi/motion/alanimationplayer-advanced.html#animationplayer-list-behaviors-pepper
-	def run(self, animation_file):
+	def run(self, animation_file, delay = None):
+		if delay:
+			time.sleep(delay)
 		self.animation_service.run(animation_file)

@@ -4,11 +4,13 @@ import threading
 
 mirai = Mirai("145.28.47.180")
 
-mirai.motion().run('animations/Stand/Gestures/Hey_1')
 
 
-#threading.Thread(target=mirai.motion().run, args=('animations/Stand/Gestures/Hey_1',)).start()
+#mirai.motion().run('animations/Stand/Emotions/Neutral/Embarrassed_1')
 
+
+#exit()
+#mirai.motion().run('animations/Stand/Gestures/Hey_1')
 
 
 
@@ -19,11 +21,32 @@ mirai.motion().run('animations/Stand/Gestures/Hey_1')
 
 #mirai.motion().dab()
 
-#mirai.speech().set_volume(0.5).set_language("Dutch")
-#mirai.speech().set_speed(150).say("Hey Hallo!")
-#time.sleep(.4)
-#mirai.speech().set_speed(40).say("Ik ben Miray")
-#mirai.speech().set_speed(40).set_volume(0.8).say("en ik ben een robot").set_volume(0.5)
+mirai.motion().run('animations/Stand/Gestures/ShowTablet_2')
+exit()
+
+threading.Thread(target=mirai.motion().run, args=('animations/Stand/Gestures/Hey_1',)).start()
+time.sleep(.4)
+mirai.speech().set_volume(0.5).set_language("Dutch")
+mirai.speech().set_speed(150).say("Hey Hallo!")
+time.sleep(.4)
+mirai.speech().set_speed(40).say("Ik ben Miray")
+mirai.speech().set_speed(40).set_volume(0.8).say("en ik ben een robot").set_volume(0.5)
+
+time.sleep(.6)
+
+threading.Thread(target=mirai.motion().run, args=('animations/Stand/Gestures/Explain_8',)).start()
+threading.Thread(target=mirai.motion().run, args=('animations/Stand/Gestures/Explain_6', 2)).start()
+mirai.speech().set_speed(40).say("Ik woon hier bij de hogeschool van amsterdam, tussen de informatica studenten.")
+print("test")
+mirai.motion().set_head(0, 0)
+
+
+
+
+
+
+
+#threading.Thread(target=mirai.motion().run, args=('mirai_moves/dab',)).start()
 
 #mirai.motion().wave()
 #time.sleep(3)
