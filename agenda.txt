@@ -27,3 +27,5 @@ TODO / details:
 - Leidsendam
 - Aanhalingstekens
 - Toppers
+- mogelijkheden gezichten vinden en daarop reageren.
+- Kijken naar bewegingen met de vingers, individueel als een animatie.

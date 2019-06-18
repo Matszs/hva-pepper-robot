@@ -1,0 +1,65 @@
+<html>
+<head>
+    <title>Mirai App</title>
+    <style>
+
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 20px;
+            margin: 0 0 10px 0;
+        }
+
+        div.group {
+            border: 1px solid #999;
+            border-radius: 5px;
+            padding: 5px;
+            margin: 5px;
+        }
+
+        button {
+            height: 40px;
+            margin: 5px;
+            min-width: 100px;
+        }
+
+
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script type="text/javascript" src="js/mqttws31.min.js"></script>
+    <script type="text/javascript" src="js/mqtt-client.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+</head>
+<body>
+
+    <div class="group">
+        <h1>Uitspreken</h1>
+
+        <label>Tekst: </label>
+        <input id="say-txt" type="text" /><br />
+        <button id="say-btn">Say</button><br />
+    </div>
+
+    <div class="group">
+        <h1>Animaties</h1>
+
+        <button id="wave-btn">Zwaaien</button><br />
+        <button id="bow-btn">Buigen</button><br />
+        <button id="dab-btn">Dab</button><br />
+    </div>
+
+    <div class="group">
+        <h1>Programma's</h1>
+
+        <button id="show_1-btn">Show 1</button><br />
+        <button id="show_2-btn">Show 2</button><br />
+        <button id="show_3-btn">Show 3</button><br />
+        <button id="show_4-btn">Show 4</button><br />
+    </div>
+
+</body>
+</html>
