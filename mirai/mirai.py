@@ -4,14 +4,22 @@ import sys
 from speech import Speech
 from motion import Motion
 from tablet import Tablet
+from face_detection import FaceDetection
+from waving_detection import WavingDetection
+from audio_player import AudioPlayer
+from speech_recognition import SpeechRecognition
 
 class Mirai:
-	ip = port = _motion = _speech = _tablet = session = None
+	ip = port = _motion = _speech = _tablet = _face_detection = _wave_detection = _audio_player = _speech_recognition = session = None
 
 	def load_modules(self):
 		self._speech = Speech(self.session)
 		self._motion = Motion(self.session)
 		self._tablet = Tablet(self.session)
+		self._face_detection = FaceDetection(self.session)
+		self._wave_detection = WavingDetection(self.session)
+		self._audio_player = AudioPlayer(self.session)
+		self._speech_recognition = SpeechRecognition(self.session)
 
 	def __init__(self, ip, port = 9559):
 		self.ip = ip
@@ -35,6 +43,18 @@ class Mirai:
 
 	def tablet(self):
 		return self._tablet
+
+	def face_detection(self):
+		return self._face_detection
+
+	def wave_detection(self):
+		return self._wave_detection
+
+	def audio_player(self):
+		return self._audio_player
+
+	def speech_recognition(self):
+		return self._speech_recognition
 
 	def sleep(self):
 		return self._motion.sleep()

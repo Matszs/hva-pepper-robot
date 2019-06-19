@@ -15,8 +15,8 @@ class Motion:
 
 		self.stand() # default standing
 
-	def stand(self):
-		self.posture_service.goToPosture("StandInit", 0.1)
+	def stand(self, speed = 0.1):
+		self.posture_service.goToPosture("StandInit", speed)
 		self.set_head(0, 0)
 		return self
 
@@ -35,11 +35,43 @@ class Motion:
 		self.motion_service.setAngles("HeadPitch", y, speed)
 		return self
 
-	def move_head_left(self, speed = 0.3):
-		return self.set_head(1.3, 0, speed)
+	def head_move_1(self):
+		names = ["HeadYaw", "HeadPitch"]
+		angleLists = [[1.0, 0.0], [0.4, 0.0, 0.1]]
+		times = [[3, 5], [4, 5, 6]]
+		isAbsolute = True
+		self.motion_service.angleInterpolation(names, angleLists, times, isAbsolute)
+		return self
 
-	def move_head_right(self, speed = 0.3):
-		return self.set_head(-1.3, 0, speed)
+	# http://doc.aldebaran.com/2-4/naoqi/motion/control-joint.html :: angleInterpolation
+	def move_head_left(self, speed = 1.0):
+		names = ["HeadYaw", "HeadPitch"]
+		angleLists = [[1.0], [0.0]]
+		times = [[speed], [speed]]
+		isAbsolute = True
+		self.motion_service.angleInterpolation(names, angleLists, times, isAbsolute)
+
+		return self
+
+	# http://doc.aldebaran.com/2-4/naoqi/motion/control-joint.html :: angleInterpolation
+	def move_head_right(self, speed = 1.0):
+		names = ["HeadYaw", "HeadPitch"]
+		angleLists = [[-1.0], [0.0]]
+		times = [[speed], [speed]]
+		isAbsolute = True
+		self.motion_service.angleInterpolation(names, angleLists, times, isAbsolute)
+
+		return self
+
+	# http://doc.aldebaran.com/2-4/naoqi/motion/control-joint.html :: angleInterpolation
+	def move_head_center(self, speed = 1.0):
+		names = ["HeadYaw", "HeadPitch"]
+		angleLists = [[0.0], [0.0]]
+		times = [[speed], [speed]]
+		isAbsolute = True
+		self.motion_service.angleInterpolation(names, angleLists, times, isAbsolute)
+
+		return self
 
 	def set_hand(self, side, shoulder_pitch = None, shoulder_roll = None, speed = 0.3, wait_time = None):
 		# determine the arm to rotate
@@ -100,9 +132,17 @@ class Motion:
 		return self
 
 	def rotate_left(self):
-		self.motion_service.moveTo(0, 0, 1.57)
+		self.motion_service.moveTo(0, 0, -1.57)
 		#self.motion_service.waitUntilMoveIsFinished()
 
+		return self
+
+	def rotate_halfway(self):
+		self.motion_service.moveTo(0, 0, -1.57 * 2)
+		return self
+
+	def rotate_halfway_back(self):
+		self.motion_service.moveTo(0, 0, 1.57 * 2)
 		return self
 
 	'''def wave(self):
@@ -168,6 +208,16 @@ class Motion:
 
 	def move(self):
 		print("move")
+
+	def move_head(self):
+		# Shake the head from side to side
+		names = "HeadYaw"
+		angleLists = [1.0, -1.0, 1.0, -1.0, 0.0]
+		times = [1.0, 2.0, 3.0, 4.0, 5.0]
+		isAbsolute = True
+		self.motion_service.angleInterpolation(names, angleLists, times, isAbsolute)
+
+		return self
 
 	# Choose from: http://doc.aldebaran.com/2-4/naoqi/motion/alanimationplayer-advanced.html#animationplayer-list-behaviors-pepper
 	def run(self, animation_file, delay = None):

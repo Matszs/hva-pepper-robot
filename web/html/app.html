@@ -45,20 +45,40 @@
     </div>
 
     <div class="group">
-        <h1>Animaties</h1>
+        <h1>Speech</h1>
 
-        <button id="wave-btn">Zwaaien</button><br />
-        <button id="bow-btn">Buigen</button><br />
-        <button id="dab-btn">Dab</button><br />
+        <button id="show_1-btn" class="disable-after-use">Deel 1</button>
+        <button id="show_2-btn" class="disable-after-use">Deel 2</button>
+        <button id="show_3-btn" class="disable-after-use">Deel 3</button>
+        <button id="show_4-btn" class="disable-after-use">Deel 4</button>
+
+        <br />
+        <br />
+        <small>(Klepje van laadpoort moet dicht zijn om de robot te laten draaien.)</small>
     </div>
 
     <div class="group">
         <h1>Programma's</h1>
 
-        <button id="show_1-btn">Show 1</button><br />
-        <button id="show_2-btn">Show 2</button><br />
-        <button id="show_3-btn">Show 3</button><br />
-        <button id="show_4-btn">Show 4</button><br />
+        <button class="btn-topic" data-topic="pepper/start_face">Start weekprogramma</button>
+        <button class="btn-topic" data-topic="pepper/stop_face">Stop weekprogramma</button>
+    </div>
+
+    <div class="group">
+        <h1>Animaties</h1>
+
+        <button class="btn-topic" data-topic="pepper/wave">Zwaaien</button>
+        <button class="btn-topic" data-topic="pepper/bow">Buigen</button>
+        <button class="btn-topic" data-topic="pepper/dab">Dab</button>
+        <button class="btn-topic" data-topic="pepper/stand">Standaard</button>
+        <button class="btn-topic" data-topic="pepper/sleep">Slapen</button>
+    </div>
+
+    <div class="group">
+        <h1>Dansen</h1>
+
+        <button class="btn-topic" data-topic="pepper/staying_alive">Staying alive</button>
+        <button class="btn-topic" data-topic="pepper/single_ladies">Single ladies</button>
     </div>
 
 </body>

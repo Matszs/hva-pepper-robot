@@ -3,6 +3,21 @@ var mqttClient;
 
 $(function() {
 
+    $('.btn-topic').click(function() {
+        var topic = $(this).attr('data-topic');
+        var payload = $(this).attr('data-payload');
+        if(!payload) payload = '';
+
+        mqttClient.publish(topic, payload);
+    });
+
+    $('.disable-after-use').click(function() {
+       $(this).attr('disabled', 'disabled');
+    });
+
+
+
+
     $('#say-btn').click(function() {
         var text = $('#say-txt').val();
 
@@ -23,18 +38,6 @@ $(function() {
 
     $('#show_4-btn').click(function() {
         mqttClient.publish('pepper/show_4', '');
-    });
-
-    $('#wave-btn').click(function() {
-        mqttClient.publish('pepper/wave', '');
-    });
-
-    $('#bow-btn').click(function() {
-        mqttClient.publish('pepper/bow', '');
-    });
-
-    $('#dab-btn').click(function() {
-        mqttClient.publish('pepper/dab', '');
     });
 
 
