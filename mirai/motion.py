@@ -12,8 +12,7 @@ class Motion:
 
 		# Disable the autonomous ability of the arms.
 		self.motion_service.setIdlePostureEnabled("Arms", False)
-
-		self.stand() # default standing
+		self.motion_service.moveInit()
 
 	def stand(self, speed = 0.1):
 		self.posture_service.goToPosture("StandInit", speed)

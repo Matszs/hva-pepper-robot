@@ -9,8 +9,10 @@ class FaceDetection:
 	on_face_detected_callback = None
 	time_out_time = 0
 	last_time_detected = None
+	mirai = None
 
-	def __init__(self, session):
+	def __init__(self, session, mirai):
+		self.mirai = mirai
 		self.session = session
 		self.face_detection_service = self.session.service("ALFaceDetection")
 		self.memory_service = self.session.service("ALMemory")
@@ -18,7 +20,13 @@ class FaceDetection:
 	def process_face_detection(self):
 		while self.detection_started:
 			time.sleep(0.5)
-			val = self.memory_service.getData("FaceDetected", 0)
+			try:
+				val = self.memory_service.getData("FaceDetected", 0)
+				print(val)
+			except:
+				if self.mirai:
+					self.mirai.checkConnection()
+				continue
 
 			# Check if we find some face
 			if val and isinstance(val, list) and len(val) > 0:

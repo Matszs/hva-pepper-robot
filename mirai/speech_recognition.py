@@ -5,7 +5,6 @@ import threading
 class SpeechRecognition:
 	session = speech_recognition_service  = memory_service = None
 	speech_recognition_started = False
-	last_rec_time = None
 	on_speech_recognized_callback = None
 	words_list = ['test']
 
@@ -20,21 +19,23 @@ class SpeechRecognition:
 
 	def process_speech_recognition(self):
 		while self.speech_recognition_started:
-			time.sleep(0.5)
+			time.sleep(1)
 
-			recognize = self.memory_service.getData("WordRecognized", 0)
+			recognize = self.memory_service.getData("WordRecognized")
 
 			if recognize and len(recognize) == 2 and len(recognize[0]) > 0:
-				rec_word = recognize[0]
-				rec_time = recognize[1]
+				try:
+					# Remove the event when we get data from it, so we don't get the same data twice.
+					self.memory_service.removeData("WordRecognized")
 
-				if self.last_rec_time and self.last_rec_time == rec_time:
-					continue
+					word = recognize[0]
+					probability = recognize[1]
 
-				self.last_rec_time = rec_time
-
-				if self.on_speech_recognized_callback:
-					self.on_speech_recognized_callback(rec_word)
+					self.stop()
+					if self.on_speech_recognized_callback:
+						self.on_speech_recognized_callback(word, probability)
+				except RuntimeError:
+					pass
 
 	def start(self):
 		self.stop()

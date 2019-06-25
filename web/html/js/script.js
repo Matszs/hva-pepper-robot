@@ -4,6 +4,12 @@ var mqttClient;
 $(function() {
 
     $('.btn-topic').click(function() {
+
+        // When a object contains the 'data-confirm' attribute, ask for confirmation
+        if($(this).attr('data-confirm'))
+            if(!confirm($(this).attr('data-confirm')))
+                return;
+
         var topic = $(this).attr('data-topic');
         var payload = $(this).attr('data-payload');
         if(!payload) payload = '';
@@ -15,8 +21,10 @@ $(function() {
        $(this).attr('disabled', 'disabled');
     });
 
-
-
+    $('.btn-animation').click(function() {
+        var animation = $('#animation-selection').val();
+        mqttClient.publish('pepper/animation', animation);
+    });
 
     $('#say-btn').click(function() {
         var text = $('#say-txt').val();
