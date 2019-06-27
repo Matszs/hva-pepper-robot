@@ -1,5 +1,7 @@
 # coding=utf-8
 # error log; tail -f /var/log/naoqi/servicemanager/system.Naoqi_error.log
+# Debug log; tail -f /var/log/naoqi/servicemanager/system.Naoqi.log
+# Autoload on boot; nano /home/nao/naoqi/preferences/autoload.ini
 from mirai import Mirai
 import time
 import threading
@@ -10,7 +12,7 @@ import paho.mqtt.client as mqtt
 DEFAULT_TEXT_SPEED = 100 # 50 - 400
 
 mirai = None
-started = True # TODO: Set to False
+started = False # TODO: Set to False
 
 def mqtt_connected(client, userdata, flags, rc):
 	print("Connected with result code " + str(rc))
@@ -90,21 +92,21 @@ def show_1():
 	time.sleep(.4)
 	mirai.motion().stand(0.7)
 
-	mirai.motion().rotate_halfway()
+	rotate_done = mirai.motion().rotate_halfway()
 
 	#threading.Thread(target=mirai.motion().run, args=('animations/Stand/Gestures/Explain_1',)).start()
+	if rotate_done:
 
-	mirai.speech().asay("^mode(disabled) ^start(animations/Stand/Gestures/Explain_1) Ook een goede middag voor jullie ^wait(animations/Stand/Gestures/Explain_1) ^mode(contextual)")
-	time.sleep(.4)
+		mirai.speech().asay("^mode(disabled) ^start(animations/Stand/Gestures/Explain_1) Ook een goede middag voor jullie ^wait(animations/Stand/Gestures/Explain_1) ^mode(contextual)")
+		time.sleep(.4)
 
-	mirai.speech().asay("Excuses dat jullie tegen mijn rug moeten aankijken, het is een ingewikkeld podium")
-	time.sleep(.4)
+		mirai.speech().asay("Excuses dat jullie tegen mijn rug moeten aankijken, het is een ingewikkeld podium")
+		time.sleep(.4)
 
-	mirai.speech().asay("Ik draai weer even terug en ga verder waar ik gebleven was.")
-	time.sleep(.4)
+		mirai.speech().asay("Ik draai weer even terug en ga verder waar ik gebleven was.")
+		time.sleep(.4)
 
-
-	mirai.motion().rotate_halfway_back()
+		mirai.motion().rotate_halfway_back()
 
 	mirai.speech().say("O ja")
 	time.sleep(.4)
@@ -143,7 +145,7 @@ def show_1():
 
 	#threading.Thread(target=mirai.motion().stand).start()
 
-	mirai.speech().set_speed(20).asay("Of mijn andere zus fie die in de zorg werkt, om pasjënten met verstandelijke beperkingen, te helpen met oefeningen of eenzaamheid te bestrijden")
+	mirai.speech().asay("Of mijn andere zus fie die in de zorg werkt, om pasjënten met verstandelijke beperkingen, te helpen met oefeningen of eenzaamheid te bestrijden")
 	time.sleep(.4)
 
 

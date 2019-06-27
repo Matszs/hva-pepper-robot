@@ -49,7 +49,7 @@ class Mirai:
 		print("Connection status: " + str(connected))
 
 		if not connected:
-			time.sleep(1)
+			time.sleep(.1)
 			print("Trying to reconnect...")
 			self.connect()
 

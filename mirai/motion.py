@@ -124,6 +124,18 @@ class Motion:
 	def arm_down(self, side, speed = 0.3):
 		return self.set_hand(side, 1, 0, speed)
 
+	def disable_collision_protection(self):
+		#self.motion_service.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", False]])
+		#self.motion_service.setMotionConfig([["ENABLE_STIFFNESS_PROTECTION", False]])
+		#self.motion_service.setCollisionProtectionEnabled("Arms", False)
+		self.motion_service.setExternalCollisionProtectionEnabled("All", False) # Now allowed on Pepper, warranty issues, /advanced to enable/disable
+
+	def enable_collision_protection(self):
+		#self.motion_service.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
+		#self.motion_service.setMotionConfig([["ENABLE_STIFFNESS_PROTECTION", True]])
+		#self.motion_service.setCollisionProtectionEnabled("Arms", True)
+		self.motion_service.setExternalCollisionProtectionEnabled("All", True) # Now allowed on Pepper, warranty issues, /advanced to enable/disable
+
 	def rotate_right(self):
 		self.motion_service.moveTo(0, 0, -1.57)
 		#self.motion_service.waitUntilMoveIsFinished()
@@ -137,12 +149,14 @@ class Motion:
 		return self
 
 	def rotate_halfway(self):
-		self.motion_service.moveTo(0, 0, -1.57 * 2)
-		return self
+		self.disable_collision_protection()
+		return self.motion_service.moveTo(0, 0, -1.57 * 2)
+		self.enable_collision_protection()
 
 	def rotate_halfway_back(self):
-		self.motion_service.moveTo(0, 0, 1.57 * 2)
-		return self
+		self.disable_collision_protection()
+		return self.motion_service.moveTo(0, 0, 1.57 * 2)
+		self.enable_collision_protection()
 
 	'''def wave(self):
 		#self.motion_service.setStiffnesses("Arms", 0.1)
