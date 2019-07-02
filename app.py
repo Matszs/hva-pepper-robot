@@ -395,6 +395,13 @@ def showcase2():
 
 
 def program():
+
+	# WEEK PROGRAM
+	time.sleep(120)
+	global started
+	started = True
+	# WEEK PROGRAM
+
 	while not started:
 		print("Waiting to start..")
 		time.sleep(1)
@@ -410,6 +417,11 @@ def program():
 
 	mirai.speech_recognition().set_on_speech_recognized_callback(on_speech_recognized)
 	mirai.speech_recognition().set_word_list(['bim', 'technische informatica', 'game development', 'software engineer', 'cyber security'])
+
+	# WEEK PROGRAM
+	mirai.face_detection().start_detection()
+	# WEEK PROGRAM
+
 
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
