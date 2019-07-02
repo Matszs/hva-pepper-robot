@@ -82,24 +82,34 @@ def show_1():
 	#threading.Thread(target=mirai.motion().run, args=('animations/Stand/Gestures/Hey_1',)).start()
 	#time.sleep(.4)
 
+	mirai.speech().set_speed(80).asay("Bedankt Irene.")
+
+	time.sleep(3)
+
 	mirai.speech().set_speed(DEFAULT_TEXT_SPEED).asay("^mode(disabled) ^start(animations/Stand/Gestures/Hey_1) Hallo, ik ben dus miray, en ik ben een robot maar dat zag je warschijnlijk al! ^wait(animations/Stand/Gestures/Hey_1) ^mode(contextual)")
+	mirai.motion().set_head(-0.7, 0.3)
 	mirai.speech().asay("Ik woon sinds kort bij de opleiding ha b o ICT.")
+	mirai.motion().set_head(0.7, 0.3)
 	mirai.speech().asay("en daar zijn zij heel blij mee!")
 
 	mirai.speech().set_speed(90).asay("ha")
 	mirai.speech().asay("ha")
 	mirai.speech().asay("ha")
 	time.sleep(.4)
-	mirai.motion().stand(0.7)
+
+	mirai.speech().asay("Zo lachen robots dus niet.")
+	time.sleep(.4)
 
 	rotate_done = mirai.motion().rotate_halfway()
 
 	#threading.Thread(target=mirai.motion().run, args=('animations/Stand/Gestures/Explain_1',)).start()
 	if rotate_done:
+		mirai.motion().set_head(-0.7, 0.3)
 
 		mirai.speech().asay("^mode(disabled) ^start(animations/Stand/Gestures/Explain_1) Ook een goede middag voor jullie ^wait(animations/Stand/Gestures/Explain_1) ^mode(contextual)")
 		time.sleep(.4)
 
+		mirai.motion().set_head(0, 0.3)
 		mirai.speech().asay("Excuses dat jullie tegen mijn rug moeten aankijken, het is een ingewikkeld podium")
 		time.sleep(.4)
 
@@ -108,17 +118,23 @@ def show_1():
 
 		mirai.motion().rotate_halfway_back()
 
-	mirai.speech().say("O ja")
+	mirai.motion().set_head(-0.8, 0.3)
+
+	mirai.speech().say("Oh")
+	mirai.speech().say("ja")
 	time.sleep(.4)
 
 	mirai.speech().asay("Om even alle misverstanden te voorkomen beste aanwezigen, wil ik jullie uitleggen wat voor robot ik ben")
 	time.sleep(.4)
 
+	mirai.motion().set_head(0.8, 0.3)
 	mirai.speech().asay("Of misschien juist laten zien wat voor robot ik niet ben")
 	time.sleep(.4)
 
 	mirai.speech().asay("Kijk maar even mee.")
 	time.sleep(.4)
+
+	mirai.motion().set_head(0.7, 0.3)
 
 	#threading.Thread(target=mirai.motion().run, args=('animations/Stand/Gestures/ShowTablet_2',)).start()
 	#mirai.tablet().open_page('video_1.html')
@@ -128,7 +144,10 @@ def show_1():
 	#threading.Thread(target=mirai.motion().stand).start()
 	#time.sleep(3)
 
-	time.sleep(2)
+	threading.Thread(target=mirai.motion().stand).start()
+	time.sleep(11)
+
+	mirai.motion().set_head(0, 0.3)
 
 	mirai.speech().asay("Dit ben ik dus niet")
 	time.sleep(.4)
@@ -138,6 +157,8 @@ def show_1():
 
 	mirai.speech().asay("Hier helpt beivoorbeeld mijn zus Elvie burgers in het gemeentehuis van Leidschendam")
 	time.sleep(.4)
+
+	mirai.motion().set_head(0.3, 0.3)
 
 	#time.sleep(3)
 
@@ -174,7 +195,7 @@ def show_2():
 	print("show 2")
 	print(datetime.datetime.now())
 
-	mirai.speech().set_speed(40).asay("Komend jaar gaan studenten van de opleiding ha b o - ict met mij aan de slag om uit te zoeken hoe ik mezelf nuttig kan maken").set_speed(DEFAULT_TEXT_SPEED)
+	mirai.speech().set_speed(40).asay("Komend jaar gaan studenten van de opleiding ha b o - ict met mij aan de slag om uit te zoeken hoe ik mezelf nuttig kan maken in de zorg").set_speed(DEFAULT_TEXT_SPEED)
 	time.sleep(.4)
 
 	# quotes with fingers
@@ -183,7 +204,7 @@ def show_2():
 	mirai.speech().asay("Onze studenten zijn echte toppers")
 
 	#mirai.tablet().open_page('video_2.html')
-	time.sleep(2)  # do nothing for 6 seconds
+	time.sleep(8)  # do nothing for 6 seconds
 
 	threading.Thread(target=mirai.motion().run, args=('animations/Stand/Gestures/No_3',)).start()
 
@@ -224,35 +245,43 @@ def show_3():
 	#mirai.motion().stand()
 	#time.sleep(2)  # do nothing for 6 + 2 seconds because of info graphic
 
+	#mirai.motion().rotate_halfway()
+
 	mirai.speech().asay("Wij proberen de wereld eerlijker, beter en mooier te maken met ICT.")
 	time.sleep(.4)
 
 	#threading.Thread(target=mirai.motion().run, args=('animations/Stand/Gestures/YouKnowWhat_1',)).start()
-	mirai.speech().asay("Je kan ons zien als ^mode(disabled) ^start(animations/Stand/Gestures/YouKnowWhat_1) de moeder teresa van de ict ^wait(animations/Stand/Gestures/YouKnowWhat_1) ^mode(contextual)")
+	mirai.speech().asay("Je kan ons zien als ^mode(disabled) ^start(animations/Stand/Gestures/YouKnowWhat_1) de moeder te resa van de ict ^wait(animations/Stand/Gestures/YouKnowWhat_1) ^mode(contextual)")
 
 	threading.Thread(target=mirai.motion().stand).start()
-	time.sleep(1)  # fragment moeder theresa
+	time.sleep(2)  # fragment moeder theresa
 
 	mirai.speech().asay("Ok ok, misschien is dat een beetje overdreven.")
 	time.sleep(.4)
+
+	#mirai.motion().rotate_halfway_back()
+
 	mirai.speech().asay("Ik ben hier gewoon nog niet zo goed in.")
 	time.sleep(.4)
 	mirai.speech().asay("Over ICT praten is ook zó 19 80.")
 	time.sleep(.4)
 
 	print(datetime.datetime.now())
-	time.sleep(2)  # oude computer + pacman
 
 
 def show_4():
 	print("Show 4")
 	print(datetime.datetime.now())
 
-	mirai.speech().set_speed(DEFAULT_TEXT_SPEED).asay("ict moet je beleven. Daarom hebben wij speciaal voor jullie een expositie ingericht.")
+	mirai.speech().set_speed(DEFAULT_TEXT_SPEED).asay("Nee")
+	mirai.speech().asay("dat gaan we niet doen.")
+	mirai.speech().asay("Ict moet je beleven. Daarom hebben wij speciaal voor jullie een expositie ingericht.")
 	time.sleep(.4)
 	mirai.speech().asay("Bezoek de ha b o - ict ekspeeriuns deze week en maak kennis met onze studenten en hun werk.")
 	time.sleep(.4)
-	mirai.speech().asay("Ben je benieuwd geworden? Neem hier alvast een kijkje.")
+	mirai.speech().asay("Je bent morgen ook welkom op de Feestelijke Launch van onze nieuwe opleiding cijber Security AD. Hier in het Kohnstammhuis.")
+	time.sleep(.4)
+	mirai.speech().asay("En kom vrijdag naar Fi-Ar vrijdag en beleef mooie Fi-Ar ervaringen. ")
 
 	#threading.Thread(target=mirai.motion().run, args=('animations/Stand/Gestures/ShowTablet_3',)).start()
 	#mirai.tablet().open_page('video_1.html')
@@ -261,14 +290,18 @@ def show_4():
 	#time.sleep(2)
 	#mirai.tablet().open_page('index.html')  # back to default screen
 
-	time.sleep(10)
+	time.sleep(2)
+	mirai.speech().asay("Ik hoop je deze week vaak te zien!")
+
+	time.sleep(2)
+
+	mirai.speech().asay("Dank jullie wel.")
+	time.sleep(.4)
 
 	threading.Thread(target=mirai.motion().run, args=('mirai_moves/dab',)).start()
-	mirai.speech().asay("Ik hoop je daar snel te zien!")
 	mirai.speech().asay("laters")
-	mirai.motion().run('animations/Stand/Gestures/BowShort_1')
 
-	time.sleep(.5)
+	time.sleep(10)
 
 	mirai.sleep()
 	print(datetime.datetime.now())
@@ -283,14 +316,20 @@ def show_5():
 	print(datetime.datetime.now())
 
 def preview_show():
-	mirai.speech().set_speed(DEFAULT_TEXT_SPEED).asay("^mode(disabled) ^start(animations/Stand/Gestures/Hey_2) Hey Hallo, ik ben miray en ik hoop jou maandag 1 juli te zien bij Outburst! ^wait(animations/Stand/Gestures/Hey_2) ^mode(contextual)")
+	show_1()
+	show_2()
+	show_3()
+	show_4()
+
 
 def on_face_detected_callback(count):
 	print("face detected: " + str(count))
 	mirai.speech().set_speed(DEFAULT_TEXT_SPEED).asay("^mode(disabled) ^start(animations/Stand/Gestures/Hey_1) Hallo! Welkom bij de ha b o - ict ekspeeriuns. ^wait(animations/Stand/Gestures/Hey_1) ^mode(contextual)")
 
+	mirai.speech().asay("Pas op het opstapje!")
+
 	mirai.motion().stand(0.7)
-	mirai.motion().set_head(0, 0.3)
+	mirai.motion().set_head(0, -0.3)
 
 
 def dance_staying_alive():
