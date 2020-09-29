@@ -1,0 +1,6 @@
+<project version="3">
+  <qipython name="remote_control">
+    <!-- this is your executable that will go in bin/ -->
+    <script src="app.py" />
+  </qipython>
+</project>

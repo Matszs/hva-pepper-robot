@@ -1,0 +1,78 @@
+<html>
+<head>
+    <title>Remote control</title>
+    <link href="css/all.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <style>
+
+        #keyboard-view {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .break {
+          flex-basis: 100%;
+          height: 0;
+        }
+
+        .control-button {
+            display: block;
+            background: none;
+            border: 1px solid #999999;
+            height: 50px;
+            margin: 10px;
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="keyboard-view">
+        <button data-cmd="up" class="control-button" id="btn-top"><i class="fas fa-arrow-up"></i></button>
+        <button data-cmd="up2" class="control-button" id="btn-top-fast"><i class="fas fa-long-arrow-alt-up"></i><i class="fas fa-long-arrow-alt-up"></i></button>
+
+        <div class="break"></div>
+
+        <button data-cmd="left" class="control-button" id="btn-left"><i class="fas fa-arrow-left"></i></button>
+        <button data-cmd="down" class="control-button" id="btn-down"><i class="fas fa-arrow-down"></i></button>
+        <button data-cmd="right" class="control-button" id="btn-right"><i class="fas fa-arrow-right"></i></button>
+        <div class="break"></div>
+
+        <button data-cmd="stop" class="control-button" id="btn-stop"><i class="fas fa-stop-circle"></i></button>
+        <div class="break"></div>
+
+        <button data-cmd="stand" class="control-button" id="btn-home"><i class="fas fa-home"></i></button>
+        <button data-cmd="sleep" class="control-button" id="btn-sleep"><i class="fas fa-bed"></i></button>
+        <div class="break"></div>
+
+        <button data-cmd="speak-1" data-confirm="Weet je het zeker?" class="control-button" id="btn-speak-1"><i class="fas fa-voicemail"></i></button>
+    </div>
+
+
+
+    <script src="/libs/qimessaging/2/qimessaging.js"></script>
+    <script>
+
+        QiSession(function (session) {
+            console.log("connected!");
+
+            document.querySelectorAll("[data-cmd]").forEach(input => input.addEventListener('click', function () {
+                var confirmAttr = this.getAttribute("data-confirm");
+
+                if(confirmAttr && !confirm(confirmAttr))
+                    return;
+
+                var cmd = this.getAttribute("data-cmd");
+                session.service("remoteControl").then(function (service) {
+                    service.command(cmd);
+                    console.log("cmd sent: " + cmd);
+                });
+            }));
+
+        }, function () {
+            console.log("disconnected");
+        });
+    </script>
+</body>
+</html>
