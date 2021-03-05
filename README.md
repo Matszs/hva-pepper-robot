@@ -15,6 +15,9 @@ The repository consist of a few parts:
 To start working with the robot it is required to follow the quick-start of NaoQI 2.5.
 Make sure to install the Python-SDK
 
+Upgrade PIP:
+`pip install --user --upgrade "pip==20.3.4"`
+
 Install Paho-MQTT on Pepper robot:
 
 `/home/nao/.local/bin/pip install --user paho-mqtt`
