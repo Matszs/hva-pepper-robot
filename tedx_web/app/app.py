@@ -44,16 +44,16 @@ def floor():
 
 	time.sleep(3)
 	mirai.motion().stand(0.5)
-	mirai.tablet().open_page("tedx_default.html?time=123")
+	mirai.tablet().open_page("default.html?time=123")
 
-	mirai.speech().asay("Visit our website www.hva.nl/hbo-i cee tea for more information about the training. Or visit one of these events:")
+	mirai.speech().asay("Visit our website www.hva.nl/hbo-i cee tea for more information about the programme. Or visit one of these events:")
 	mirai.motion().run('animations/Stand/Gestures/ShowTablet_1')
 	mirai.tablet().open_page("tedx_digivita.html")
 	time.sleep(6)
 	mirai.tablet().open_page("tedx_quantum.html")
 	time.sleep(6)
 
-	mirai.tablet().open_page("tedx_default.html?time=123")
+	mirai.tablet().open_page("default.html?time=123")
 	mirai.motion().stand(0.5)
 
 
@@ -68,7 +68,7 @@ def program():
 	mirai.start()
 	print("Program started")
 
-	mirai.tablet().open_page("tedx_default.html?time=123")
+	mirai.tablet().open_page("default.html?time=123")
 	mirai.speech().set_volume(1.0).set_voice("naoenu").set_language("English")
 
 	mirai.face_detection().set_on_face_detected_callback(on_face_detected_callback)
